@@ -1,4 +1,4 @@
-requrie 'rails_admin_compact/engine'
+require 'rails_admin_compact/engine'
 
 module RailsAdminCompact
   # Your code goes here...
