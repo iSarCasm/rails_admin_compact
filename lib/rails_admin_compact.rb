@@ -1,0 +1,3 @@
+module RailsAdminCompact
+  # Your code goes here...
+end
