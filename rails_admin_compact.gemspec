@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = RailsAdminCompact::VERSION
   s.authors     = ["SarCasm"]
   s.email       = ["sarcasm008@gmail.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of RailsAdminCompact."
-  s.description = "TODO: Description of RailsAdminCompact."
+  s.homepage    = "https://github.com/iSarCasm/rails_admin_compact"
+  s.summary     = "Creates Compact View templates as alternatives"
+  s.description = "Creates Compact View templates as alternatives"
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
