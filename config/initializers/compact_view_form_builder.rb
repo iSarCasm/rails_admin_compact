@@ -60,7 +60,7 @@ Rails.application.config.to_prepare do
 
   RailsAdmin::Config::Fields::Base.class_eval do
     def render_compact
-      bindings[:view].render partial: "rails_admin/main/compact_view/#{partial}", locals: {field: self, form: bindings[:form]}
+      bindings[:view].render partial: "rails_admin/main/compact/#{partial}", locals: {field: self, form: bindings[:form]}
     rescue StandardError
       render
     end
