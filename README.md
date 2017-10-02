@@ -11,7 +11,7 @@ end
 ```
 
 ## To add a new template
-Create new view under `app/views/rails_admin/main/templates/_my_template.haml`
+Create new view under `app/views/rails_admin/main/templates/_my_template.html.haml`
 With contents similar to:
 ```ruby
 -# DO NOT REMOVE THAT LINE
