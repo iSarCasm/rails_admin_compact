@@ -1,28 +1,30 @@
 # RailsAdminCompact
-Short description and motivation.
+Adds Template system as well compact version of built-in field renderers of Rails Admin
 
-## Usage
-How to use my plugin.
-
-## Installation
-Add this line to your application's Gemfile:
-
+## To specify the template for the RailsAdmin section do
 ```ruby
-gem 'rails_admin_compact'
+rails_admin do
+  update do
+    set_template 'my_template'
+  end
+end
 ```
 
-And then execute:
-```bash
-$ bundle
+## To add a new template
+Create new view under `app/views/rails_admin/main/templates/_my_template.haml`
+With contents similar to:
+```ruby
+-# DO NOT REMOVE THAT LINE
+- config_template(fields, options)
+
+-# For field render you can use compact_render_field(field) or field.render
+.clearfix
+  - for_field :hotel_id do |field, css, id, label|
+    %div{class: "col-md-3 #{css}", id: id}
+      %p
+        = label
+      = compact_render_field field
 ```
 
-Or install it yourself as:
-```bash
-$ gem install rails_admin_compact
-```
-
-## Contributing
-Contribution directions go here.
-
-## License
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+**Note:** DONT REMOVE FIRST LINE
+**Note:** You can use both `compact_render_field field` or `field.render`
