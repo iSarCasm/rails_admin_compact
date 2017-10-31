@@ -1,0 +1,13 @@
+- @model_config.show.with(object: @object, view: self, controller: self.controller).visible_groups.each do |fieldset|
+  - unless (fields = fieldset.with(object: @object, view: self, controller: self.controller).visible_fields).empty?
+    - if !(values = fields.map{ |f| f.formatted_value.presence }).compact.empty? || !RailsAdmin::config.compact_show_view
+      .fieldset
+        %h4
+          = fieldset.label
+        - if fieldset.help
+          %p= fieldset.help
+        %dl
+          - if t = @model_config.show.template
+            = render partial: "rails_admin/main/templates/#{t}", locals: {fields: fields, values: values, model_config: @model_config, object: @object}
+          - else
+            = render partial: 'rails_admin/main/rails_admin_show', locals: {fields: fields, values: values, model_config: @model_config, object: @object}

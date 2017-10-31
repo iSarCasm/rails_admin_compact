@@ -38,5 +38,16 @@ Rails.application.config.to_prepare do
         block.call(field, css, id, label)
       end
     end
+
+    def config_show_template(fields)
+      self.define_singleton_method(:for_field) do |field_name, &block|
+        field = template_field(fields, field_name)
+        css   = "#{field.type_css_class} #{field.css_class}"
+        id    = "#{field_name.to_s}_id"
+        label = field.label
+        value = field.pretty_value.empty? ? "<Undefined>" : field.pretty_value
+        block.call(field, css, id, label, value)
+      end
+    end
   end
 end
