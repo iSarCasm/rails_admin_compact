@@ -45,7 +45,8 @@ Rails.application.config.to_prepare do
         css   = "#{field.type_css_class} #{field.css_class}"
         id    = "#{field_name.to_s}_id"
         label = field.label
-        value = field.pretty_value.empty? ? "<Undefined>" : field.pretty_value
+        value = field.pretty_value
+        value = '<Undefined>' if value.kind_of?(Array) && value.empty?
         block.call(field, css, id, label, value)
       end
     end
