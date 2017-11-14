@@ -48,7 +48,7 @@ Rails.application.config.to_prepare do
         id    = "#{field_name.to_s}_id"
         label = field.label
         value = field.pretty_value
-        value = '<Undefined>' if value.respond_to? :empty? && value.empty?
+        value = '<Undefined>' if value.respond_to?(:empty?) && value.empty?
         block.call(field, css, id, label, value)
       end
     end
