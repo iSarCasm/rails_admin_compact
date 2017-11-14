@@ -32,6 +32,7 @@ Rails.application.config.to_prepare do
     def config_template(fields, options)
       self.define_singleton_method(:for_field) do |field_name, &block|
         field = template_field(fields, field_name)
+        raise "#{field_name} not found" unless field
         css   = template_css(field)
         id    = "#{template_dom_id(field, options)}_field"
         label = label(field_name, capitalize_first_letter(field.label), class: 'control-label')
@@ -42,7 +43,7 @@ Rails.application.config.to_prepare do
     def config_show_template(fields)
       self.define_singleton_method(:for_field) do |field_name, &block|
         field = template_field(fields, field_name)
-        raise "#{field_name} not found" if field.nil?
+        raise "#{field_name} not found" unless field
         css   = "#{field.type_css_class} #{field.css_class}"
         id    = "#{field_name.to_s}_id"
         label = field.label
