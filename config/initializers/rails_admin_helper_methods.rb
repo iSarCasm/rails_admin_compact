@@ -43,7 +43,7 @@ Rails.application.config.to_prepare do
     def config_show_template(fields)
       self.define_singleton_method(:for_field) do |field_name, &block|
         field = template_field(fields, field_name)
-        raise "Field '#{field_name}' not found, available fields are #{fields}" unless field
+        raise "Field '#{field_name}' not found, available fields are #{fields.map{|f| f.method_name}}" unless field
         css   = "#{field.type_css_class} #{field.css_class}"
         id    = "#{field_name.to_s}_id"
         label = field.label
